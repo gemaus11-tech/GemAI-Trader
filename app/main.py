@@ -1,7 +1,7 @@
 from app.banner import show_banner
 from coinspot.client import CoinSpotClient
 from config.settings import check_settings
-
+from app.dashboard import show_dashboard
 
 def main():
     show_banner()
@@ -14,13 +14,11 @@ def main():
 
     print()
 
-    client = CoinSpotClient()
-    client.check_connection()
+client = CoinSpotClient()
+client.check_connection()
 
-    print()
-    print("Status: READ ONLY")
-    print("Next step: Retrieve portfolio")
+show_dashboard()
 
-
-if __name__ == "__main__":
-    main()
+print()
+print("Status: READ ONLY")
+print("Next step: Retrieve portfolio")
