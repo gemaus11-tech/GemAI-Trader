@@ -5,14 +5,7 @@ from rich.table import Table
 console = Console()
 
 
-def show_dashboard():
-
-
-    from rich.console import Console
-    from rich.panel import Panel
-    from rich.table import Table
-
-    console = Console()
+def show_dashboard(assets=None):
 
     console.print(
         Panel.fit(
@@ -27,7 +20,14 @@ def show_dashboard():
     table.add_column("Coin")
     table.add_column("Balance", justify="right")
     table.add_column("AUD Value", justify="right")
-
-    table.add_row("-", "-", "-")
+    if not assets:
+            table.add_row("-", "-", "-")
+    else:
+          for asset in assets:
+                table.add_row(
+                    asset["coin"],
+                    str(asset["balance"]),
+                    f"${asset['value']:.2f}",
+            )
 
     console.print(table)
